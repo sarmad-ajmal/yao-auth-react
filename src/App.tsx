@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
+import './app.css'
 
 const AuthModule = lazy(() => import('./components/auth/auth'))
 
@@ -10,8 +11,11 @@ function App() {
         <Suspense fallback={<FallBack />}>
           <Routes>
             <Route path='auth/*' element={<AuthModule />} />
-            <Route path='/' element={<Home />} />
+            {/* <Route path='/secure/*' element={<PrivateRoute />}>
+              <Route path='*' element={<DefaultRedirectRoute />} />
+            </Route> */}
           </Routes>
+          {/* <Route path='*' element={<DefaultRedirectRoute />} /> */}
         </Suspense>
       </Router>
     </div>

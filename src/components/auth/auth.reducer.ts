@@ -1,31 +1,40 @@
 // auth.reducer.ts
-import { createRoutine, Routine } from 'redux-saga-routines';
+import { authenticateUserAction, loginAction } from './auth.action'
+import { AuthReducerState } from './auth.interface'
+import { AnyAction } from 'redux-saga'
 
-export const authRoutine = createRoutine('AUTH_ROUTINE');
-
-interface AuthState {
-  isAuthenticated: boolean;
-  loading: boolean;
-  error: string | null;
+const initialState: AuthReducerState = {
+  loading: false,
+  accessToken: '',
+  refreshToken: '',
+  user: null,
 }
 
-const initialState: AuthState = {
-  isAuthenticated: false,
-  loading: false,
-  error: null,
-};
-
-export const authReducer = (state = initialState, action: Routine): AuthState => {
+export const authReducer = (
+  state = initialState,
+  action: AnyAction,
+): AuthReducerState => {
   switch (action.type) {
-    case authRoutine.TRIGGER:
-      return { ...state, loading: true };
-    case authRoutine.SUCCESS:
-      return { ...state, loading: false, isAuthenticated: true };
-    case authRoutine.FAILURE:
-      return { ...state, loading: false, error: action.payload };
-    case authRoutine.FULFILL:
-      return { ...state, loading: false };
+    case authenticateUserAction.TRIGGER:
+      return { ...state, loading: true }
+    case authenticateUserAction.SUCCESS:
+      return { ...state, loading: false }
+    case authenticateUserAction.FAILURE:
+      return { ...state, loading: false }
+
+    case loginAction.TRIGGER:
+      return { ...state, loading: true }
+    case loginAction.SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        accessToken: action.payload.accessToken,
+        refreshToken: action.payload.refreshToken,
+      }
+    case loginAction.FAILURE:
+      return { ...initialState }
+
     default:
-      return state;
+      return state
   }
-};
+}
