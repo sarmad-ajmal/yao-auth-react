@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import DefaultRedirectRoute from './routes/default_redirect'
+import WelcomeUser from './components/home'
 
 const AuthModule = lazy(() => import('./components/auth/auth'))
 
@@ -11,6 +12,7 @@ function App() {
         <Suspense fallback={<FallBack />}>
           <Routes>
             <Route path='auth/*' element={<AuthModule />} />
+            <Route path='/' element={<WelcomeUser name='Sarmad' />} />
             <Route path='*' element={<DefaultRedirectRoute />} />
           </Routes>
         </Suspense>

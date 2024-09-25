@@ -5,7 +5,7 @@ import { AnyAction } from 'redux-saga'
 
 const initialState: AuthReducerState = {
   loading: false,
-  accessToken: '',
+  accessToken: '448',
   refreshToken: '',
   user: null,
 }

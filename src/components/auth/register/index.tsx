@@ -1,13 +1,12 @@
+import { FormInput } from '@/common'
+import { Button } from '@/components/ui/button'
+import { Form } from '@/components/ui/form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import * as yup from 'yup'
 import { authenticateUserAction } from '../auth.action'
-import { getAuthStateSelector } from '../auth.selector'
-import { FormInput } from '@/common'
-import { Form } from '@/components/ui/form'
-import { Button } from '@/components/ui/button'
 import { AUTH_URLS } from '../routes'
 
 const schema = yup.object().shape({
@@ -29,7 +28,6 @@ const RegisterPage = () => {
   const { handleSubmit, control } = form
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const authState = useSelector(getAuthStateSelector)
   const onSuccess = () => {
     navigate('/')
   }
