@@ -5,7 +5,6 @@ import { PersistGate } from 'redux-persist/integration/react'
 import store, { persistor } from './redux/store.ts'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import '@picocss/pico'
 
 createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
