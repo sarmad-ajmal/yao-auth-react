@@ -1,12 +1,12 @@
 import { lazy, Suspense } from 'react'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import './app.css'
 
 const AuthModule = lazy(() => import('./components/auth/auth'))
 
 function App() {
   return (
-    <div className='app'>
+    <div className='app bg-slate-200'>
+      <div className='text-slate-50'>Gekkiw</div>
       <Router>
         <Suspense fallback={<FallBack />}>
           <Routes>
