@@ -23,7 +23,6 @@ const create = (baseURL = 'localhost:3000'): ApisauceInstance => {
     if (response.status === 401) {
       // Access token might be expired, try to refresh the token
       const refreshToken = Cookies.get('refreshToken')
-      debugger
       if (refreshToken) {
         // Call the refresh token endpoint to get a new access token
         const refreshResponse = await api.post('/auth/refresh', {
@@ -60,7 +59,6 @@ export function processResponse(
   response: ApiResponse<any>,
   showError: boolean,
 ) {
-  debugger
   const {
     status = 200,
     data: resData = null,
@@ -107,7 +105,6 @@ function* callServer(
   id = null,
 ) {
   if (isConnected) {
-    debugger
     // @ts-ignore
     const response = yield call(apiFunction, reqData, reqData.id || id)
 

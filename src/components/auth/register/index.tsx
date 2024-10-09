@@ -13,7 +13,6 @@ const schema = yup.object().shape({
   firstName: yup.string().required('First name is required'),
   lastName: yup.string().required('Last name is required'),
   email: yup.string().email('Invalid email').required('Email is required'),
-  email1: yup.string().email('Invalid email').required('Email is required'),
   password: yup
     .string()
     .min(6, 'Password must be at least 6 characters')
@@ -32,7 +31,6 @@ const RegisterPage = () => {
     navigate('/')
   }
   const onSubmit = (data: any) => {
-    console.log('Form Submitted', data)
     dispatch({
       type: authenticateUserAction.TRIGGER,
       payload: { data, onSuccess },
@@ -74,7 +72,7 @@ const RegisterPage = () => {
               label='Password'
               placeholder='* * * *'
               control={control}
-              name='password  '
+              name='password'
               type='password'
             />
 

@@ -1,4 +1,4 @@
-export const BASEURL = 'http://localhost:3000'
+export const BASEURL = 'http://localhost:8080'
 export const statusCodes = {
   OK: 200,
   CREATED: 201,

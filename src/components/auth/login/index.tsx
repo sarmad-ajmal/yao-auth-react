@@ -56,7 +56,7 @@ const LoginPage = () => {
               label='Password'
               placeholder='* * * *'
               control={control}
-              name='password  '
+              name='password'
               type='password'
             />
 

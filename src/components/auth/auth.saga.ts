@@ -26,7 +26,6 @@ export function* authenticateUserSaga(api: any, { payload }: any) {
 }
 export function* loginUserSaga(api: any, { payload }: any) {
   try {
-    debugger
     const { onSuccess, data } = payload
     const { statusCode, res } = yield call(Api, api, data)
     if (statusCode === statusCodes.CREATED) {
